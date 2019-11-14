@@ -1,0 +1,35 @@
+.body
+  .wrapper.devise--wrapper
+    %h2 gig 詳細
+    .container__gig
+      .container__gig__left
+        .field
+          イベント名：
+          = @gig.name
+        .field
+          日時：
+          = @gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@gig.datetime.wday]})")
+        .field
+          場所：
+          = @gig.location
+        .field
+          ジャンル：
+          = @gig.genre
+        .field
+          募集パート：
+          = @gig.parts.first.name
+          = link_to "エントリー", gig_entries_path(@gig), class: "btn btn-primary"
+        .field
+          投稿者：
+          = link_to @gig.user.name, user_path(@gig.user)
+        %br/
+        - if @gig.user_id == current_user.id
+          = link_to "削除", gig_path(@gig), method: :delete, class: "btn btn-warning"
+      .container__gig__right
+        .field
+          - if @gig.youtube
+            YouTube動画：
+            %br/
+            %iframe{:allow => "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/#{@gig.youtube}", :width => "560"}
+
+      

@@ -1,0 +1,21 @@
+.body
+  .profile.wrapper
+    .row
+      .col-md-4.text-center
+        - if @user.image?
+          = image_tag @user.image.url
+      .col-md-8
+        .row
+          %h2
+            = @user.name
+          - if @user == current_user
+            = link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-primary"
+          %br/
+        .gig
+          .gig__title
+            gigリスト
+          - @user.gigs.each do |gig|
+            .gig__title__lists
+              = link_to gig.name, gig_path(gig)
+              = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")
+              %br/

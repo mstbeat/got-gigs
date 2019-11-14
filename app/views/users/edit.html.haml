@@ -1,0 +1,37 @@
+.body
+  .wrapper.devise--wrapper
+    .container
+    %h2 プロフィール編集
+    = form_for(@user) do |f|
+      .container__left
+        .field
+          = f.label :name
+          %br/
+          = f.text_field :name, autofocus: true, autocomplete: "name"
+        .field
+          = f.label :画像
+          %br/
+          = f.file_field :image
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+      .container__right
+        .field
+          - %w(ボーカル ギター ベース キーボード ドラム その他).each.with_index do |part,i|
+            %label
+              = check_box_tag 'user[part][]', part,false,id:"user_section_#{i}"
+              = part
+      .actions
+        = f.submit "編集", class: "btn btn-primary"

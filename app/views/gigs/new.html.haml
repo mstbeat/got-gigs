@@ -1,0 +1,31 @@
+.body
+  .wrapper.devise--wrapper
+    .container
+    %h2 got gigs?
+    = form_with model: @gig do |f|
+      .field
+        = f.label :イベント名
+        %br/
+        = f.text_field :name
+      .field
+        = f.label :日時
+        %br/
+        = f.date_select :datetime
+      .field
+        = f.label :場所
+        %br/
+        = f.text_field :location
+      .field
+        = f.label :ジャンル
+        %br/
+        = f.text_field :genre
+      = f.fields_for :parts do |i|
+        .field
+          = f.label :募集パート
+          %br/
+          = i.text_field :name
+      .field
+        = f.label :YouTube動画
+        %br/
+        = f.text_field :youtube
+        = f.submit "投稿", class: "btn btn-primary"

@@ -1,0 +1,20 @@
+.body
+  .wrapper
+    .main.container
+      .main__contents.row
+        - @gigs.each do |gig|
+          .main__contents__content.col-md-4
+            .main__contents__content--name
+              イベント名：#{link_to gig.name, gig_path(gig)}
+            .main__contents__content--date
+              = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")
+            .main__contents__content--location
+              場所：#{gig.location}
+            .main__contents__content--genre
+              ジャンル：#{gig.genre}
+            .main__contents__content--need
+              .main__contents__content--need--part
+                = gig.parts.first.name
+                = link_to "エントリー", gig_entries_path(gig), class: "btn btn-primary"
+            .main__contents__content--user
+              投稿者：#{gig.user.name}

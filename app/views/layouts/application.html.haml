@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title got gigs?
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    - if flash[:notice]
+      .alert.alert-info
+        = flash[:notice]
+    - if flash[:alert]
+      .alert.alert-danger
+        = flash[:alert]
+
+    .header
+      .header__left
+        = link_to "got gigs?", root_path, method: :get
+      .header__right
+        .header__right--gig
+          -if user_signed_in?
+            = link_to "got gigs?", new_gig_path, class: "btn btn-primary"
+        .header__right--userName
+          - if user_signed_in?
+            = link_to current_user.name, user_path(current_user)
+        .header__right--session
+          - if user_signed_in?
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+          - else
+            = link_to "ログイン", new_user_session_path, method: :get
+    .main.container
+
+    .container
+    = yield
+
+    .footer
+      ©got gigs? 2019
