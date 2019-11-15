@@ -1,5 +1,5 @@
 .body
-  .wrapper.devise--wrapper
+  .profile.wrapper.devise--wrapper
     .container
     %h2 プロフィール編集
     = form_for(@user) do |f|
@@ -9,7 +9,7 @@
           %br/
           = f.text_field :name, autofocus: true, autocomplete: "name"
         .field
-          = f.label :画像
+          = f.label :プロフィール画像
           %br/
           = f.file_field :image
         .field

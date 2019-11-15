@@ -1,7 +1,7 @@
 .body
   .wrapper.devise--wrapper
     .container
-    %h2 got gigs?
+    %h2.gig got gigs?
     = form_with model: @gig do |f|
       .field
         = f.label :イベント名
@@ -25,7 +25,7 @@
           %br/
           = i.text_field :name
       .field
-        = f.label :YouTube動画
+        = f.label :YouTube, "参考動画（YouTube）"
         %br/
-        = f.text_field :youtube
+        = f.text_field :youtube, placeholder: "https://www.youtube.com/XXXXXXXXXXX", size: "40"
         = f.submit "投稿", class: "btn btn-primary"

@@ -1,0 +1,21 @@
+.body
+  .devise-wrapper
+    .entry
+      %h3 メッセージ
+      - if @messages.present?
+        .entry__message
+        - @messages.each do |m|
+          .entry__message__content
+            = m.content
+          .entry__message__user
+            (
+            %a{:href => "/users/#{m.user_id}"}
+              = m.user.name
+            = m.created_at.strftime("%Y/%m/%d %H:%M")
+            )
+      - else
+        %h5.text メッセージはまだありません
+      = form_for @message do |f|
+        = f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70
+        = f.hidden_field :group_id, :value => @group.id
+        = f.submit "投稿する", class: "btn btn-primary"

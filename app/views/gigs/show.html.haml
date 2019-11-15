@@ -16,20 +16,22 @@
           ジャンル：
           = @gig.genre
         .field
+          投稿者：
+          = @gig.user.name
+        .field
           募集パート：
           = @gig.parts.first.name
-          = link_to "エントリー", gig_entries_path(@gig), class: "btn btn-primary"
-        .field
-          投稿者：
-          = link_to @gig.user.name, user_path(@gig.user)
+          - if @gig.user == current_user
+            = link_to "エントリー状況", gig_entries_path(@gig), class: "btn btn-warning"
+          - else
+            = link_to "エントリーへ", gig_entries_path(@gig), class: "btn btn-primary"
         %br/
         - if @gig.user_id == current_user.id
-          = link_to "削除", gig_path(@gig), method: :delete, class: "btn btn-warning"
+          = link_to "gig 削除", gig_path(@gig), method: :delete, class: "btn btn-danger"
+      
       .container__gig__right
         .field
           - if @gig.youtube
-            YouTube動画：
+            参考動画：
             %br/
             %iframe{:allow => "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/#{@gig.youtube}", :width => "560"}
-
-      

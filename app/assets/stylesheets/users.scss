@@ -1,8 +1,8 @@
 .body {
-  background-color: #fafafa;
+  height: 100vh;
+  overflow: auto;
   .profile {
-    padding: 100px;
-    background-color: #fafafa;
+    padding: 50px 100px;
     .row {
       .col-md-4.text-center {
       }
@@ -14,31 +14,30 @@
           }
         }
       }
+      .gig__title {
+        margin: 20px 0;
+        font-size: 20px;
+        font-family: 'Gotmilk';
+        &__lists {
+          margin-bottom: 10px;
+          font-size: 18px;
+        }
+      }
     } 
   }
-}
-
-.body {
   .devise--wrapper {
-    padding-left: 200px;
-    padding-top: 100px;
-    h2 {
-      padding-bottom: 20px;
-    }
-    .field {
-      margin-bottom: 20px;
-    }
-    .actions {
-      margin-bottom: 20px;
-    }
-  }
-}
-
-.gig__title {
-  margin: 20px 0;
-  font-size: 20px;
-  &__lists {
-    margin-bottom: 10px;
-    font-size: 18px;
+      padding-left: 200px;
+      padding-top: 50px;
+      height: 100vh;
+      position: absolute;
+      h2 {
+        padding-bottom: 20px;
+      }
+      .field {
+        margin-bottom: 20px;
+      }
+      .actions {
+        margin-bottom: 20px;
+      }
   }
 }

@@ -10,13 +10,14 @@
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  
+  - if flash[:notice]
+    .alert.alert-info
+      = flash[:notice]
+  - if flash[:alert]
+    .alert.alert-danger
+      = flash[:alert]
   %body
-    - if flash[:notice]
-      .alert.alert-info
-        = flash[:notice]
-    - if flash[:alert]
-      .alert.alert-danger
-        = flash[:alert]
 
     .header
       .header__left

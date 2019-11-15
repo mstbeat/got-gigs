@@ -19,7 +19,7 @@ class GigsController < ApplicationController
     if @gig.parts.present?
       @gig.save
       redirect_to root_path
-      flash[:notice] = "gigが保存されました"
+      flash[:notice] = "gigが投稿されました"
     else
       redirect_to root_path
       flash[:alert] = "gigの投稿に失敗しました"
@@ -27,6 +27,7 @@ class GigsController < ApplicationController
   end
 
   def show
+    @group = Group.new(group_params)
   end
 
   def destroy
@@ -45,5 +46,9 @@ class GigsController < ApplicationController
 
     def set_gig
       @gig = Gig.find(params[:id])
+    end
+
+    def group_params
+      params.permit(:name, user_ids: [] )
     end
 end

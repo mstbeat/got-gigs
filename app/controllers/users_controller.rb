@@ -14,6 +14,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @currentUserEntry = GroupUser.where(user_id: current_user.id)
+    @userEntry = GroupUser.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.group_id == u.group_id then
+            @isGroup = true
+            @groupId = cu.group_id
+          end
+        end
+      end
+      if @isGroup
+      else
+        @group = Group.new
+        @group_user = GroupUser.new
+      end
+    end
   end
 
   private
