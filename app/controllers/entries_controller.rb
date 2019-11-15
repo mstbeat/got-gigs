@@ -9,10 +9,10 @@ class EntriesController < ApplicationController
   def create
     @entry = @gig.entries.new(entry_params)  
     if @entry.save
-      redirect_to gig_entries_path(@gig), notice: "エントリーが送信されました"
+      redirect_to gig_entries_path(@gig), notice: "エントリーが完了ました"
     else
       @entries = @gig.entries.includes(:user)
-      flash.now[:alert] = "エントリーを入力してください"
+      flash.now[:alert] = "エントリーできませんでした"
       redirect_to gig_entries_path(@gig)
     end
   end

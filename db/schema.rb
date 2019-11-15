@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_114400) do
+ActiveRecord::Schema.define(version: 2019_11_14_083828) do
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -32,6 +32,32 @@ ActiveRecord::Schema.define(version: 2019_11_12_114400) do
     t.datetime "updated_at", null: false
     t.string "youtube"
     t.index ["user_id"], name: "index_gigs_on_user_id"
+  end
+
+  create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_groups_on_name"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,5 +86,9 @@ ActiveRecord::Schema.define(version: 2019_11_12_114400) do
   add_foreign_key "entries", "gigs"
   add_foreign_key "entries", "users"
   add_foreign_key "gigs", "users"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
   add_foreign_key "parts", "gigs"
 end
