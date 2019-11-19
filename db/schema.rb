@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_083828) do
+ActiveRecord::Schema.define(version: 2019_11_18_082037) do
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2019_11_14_083828) do
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
+  create_table "gig_parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "part_id"
+    t.bigint "gig_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gig_id"], name: "index_gig_parts_on_gig_id"
+    t.index ["part_id"], name: "index_gig_parts_on_part_id"
+  end
+
   create_table "gigs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "datetime"
@@ -31,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_083828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "youtube"
+    t.text "parts"
     t.index ["user_id"], name: "index_gigs_on_user_id"
   end
 
@@ -85,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_083828) do
 
   add_foreign_key "entries", "gigs"
   add_foreign_key "entries", "users"
+  add_foreign_key "gig_parts", "gigs"
+  add_foreign_key "gig_parts", "parts"
   add_foreign_key "gigs", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
