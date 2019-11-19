@@ -35,9 +35,13 @@
       }
       .field {
         margin-bottom: 20px;
+        &__part {
+          margin-right: 15px;
+        }
       }
       .actions {
         margin-bottom: 20px;
       }
   }
 }
+

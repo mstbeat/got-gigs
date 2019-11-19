@@ -64,13 +64,13 @@ h2 {
   position: relative;
   overflow: auto;
   .wrapper {
-    display: flex;
+    // display: flex;
     flex-direction: column;
     .main {
       width: 100%;
       margin: 50px auto;
       &__contents {
-        display: flex;
+        // display: flex;
         flex-wrap: flex;
         font-size: 16px;
         &__content {
@@ -84,18 +84,24 @@ h2 {
           &--date {
             margin-bottom: 5px;
           }
+          &--location {
+            margin-bottom: 5px;
+          }
           &--genre {
             margin-bottom: 5px;
           }
-          &--need {
-            display: flex;
-            justify-content: center;
-            height: 40px;
-            line-height: 40px;
+          &--user {
             margin-bottom: 5px;
+          }
+          &--need {
+            // display: flex;
+            height: auto;
+            // line-height: 40px;
+            word-break: keep-all;
             align-items: center;
             margin: 0 auto;
             &--part {
+              margin-bottom: 10px;
               margin-right: 20px;
             }
           }

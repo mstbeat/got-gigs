@@ -3,12 +3,12 @@ class GigsController < ApplicationController
   before_action :set_gig, only: [:show, :destroy]
 
   def index
-    @gigs = Gig.limit(30).includes(:parts, :user).order('created_at DESC')
+    @gigs = Gig.limit(30).includes(:user).order('created_at DESC')
   end
 
   def new
     @gig = Gig.new
-    @gig.parts.build
+    # @gig.parts.build
   end
 
   def create
@@ -16,8 +16,7 @@ class GigsController < ApplicationController
     url = params[:gig][:youtube]
     url = url.last(11)
     @gig.youtube = url
-    if @gig.parts.present?
-      @gig.save
+    if @gig.save
       redirect_to root_path
       flash[:notice] = "gigが投稿されました"
     else
@@ -41,7 +40,7 @@ class GigsController < ApplicationController
 
   private
     def gig_params
-      params.require(:gig).permit(:name, :datetime, :location, :genre, :youtube, parts_attributes: [:name]).merge(user_id: current_user.id)
+      params.require(:gig).permit(:name, :datetime, :location, :genre, :youtube, parts: []).merge(user_id: current_user.id)
     end
 
     def set_gig

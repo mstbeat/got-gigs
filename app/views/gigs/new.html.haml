@@ -19,11 +19,35 @@
         = f.label :ジャンル
         %br/
         = f.text_field :genre
-      = f.fields_for :parts do |i|
-        .field
-          = f.label :募集パート
-          %br/
-          = i.text_field :name
+      .field
+        = f.label :募集パート
+        %br/
+        %label
+          ボーカル
+          %input{type: "checkbox", name: "gig[parts][]", value: "ボーカル", class: "field__part"}
+        %label
+          ギター
+          %input{type: "checkbox", name: "gig[parts][]", value: "ギター", class: "field__part"}
+        %label
+          キーボード
+          %input{type: "checkbox", name: "gig[parts][]", value: "キーボード", class: "field__part"}
+        %label
+          ピアノ
+          %input{type: "checkbox", name: "gig[parts][]", value: "ピアノ", class: "field__part"}
+        %label
+          ベース
+          %input{type: "checkbox", name: "gig[parts][]", value: "ベース", class: "field__part"}
+        %label
+          ドラム
+          %input{type: "checkbox", name: "gig[parts][]", value: "ドラム", class: "field__part"}
+        %label
+          その他
+          %input{type: "text_field", name: "gig[parts][]"}
+      -# = f.fields_for :parts do |i|
+      -#   .field
+      -#     = f.label :募集パート
+      -#     %br/
+      -#     = i.text_field :name
       .field
         = f.label :YouTube, "参考動画（YouTube）"
         %br/
