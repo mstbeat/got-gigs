@@ -26,3 +26,5 @@
               = link_to "エントリー状況", gig_entries_path(gig), class: "btn btn-warning"
             - else
               = link_to "エントリーへ", gig_entries_path(gig), class: "btn btn-primary"
+      .center
+        = paginate(@gigs)

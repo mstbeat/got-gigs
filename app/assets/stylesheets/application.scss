@@ -20,6 +20,7 @@
     font-size: 50px;
     font-family: 'Gotmilk';
     a {
+      font-weight: normal;
       text-decoration: none;
       color: black;
     }
@@ -38,12 +39,14 @@
     &--userName {
       margin-right: 30px;
       a {
+        font-weight: normal;
         text-decoration: none;
         color: black;
       }
     }
     &--session {
       a {
+        font-weight: normal;
         text-decoration: none;
         color: black;
       }
@@ -147,4 +150,32 @@ h2 {
   src: font-url('Phenix_American.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+.pagination {
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  display: inline-block;
+  color: #007bff;
+  .current {
+    padding: 8px 16px;
+    font-size: 18px;
+  }
+}
+
+.pagination a {
+  font-weight: normal;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 18x;
+}
+
+.center {
+  text-align: center;
+}
+
+a {
+  font-weight: bold;
 }
