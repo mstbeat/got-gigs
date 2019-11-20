@@ -74,6 +74,13 @@
         margin-left: 100px;
       }
     }
+    .entry-title {
+      display: flex;
+      h5 {
+        margin-left: 40px;
+        line-height: 40px;
+      }
+    }
     .entries {
       height: 100%;
       h3 {
@@ -92,6 +99,9 @@
       .form {
         margin-top: 20px;
         padding-bottom: 80px;
+        &__message {
+          margin-right: 20px;
+        }
       }
     }    
   // }

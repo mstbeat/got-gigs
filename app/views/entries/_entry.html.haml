@@ -2,12 +2,11 @@
   .message__content
     - if entry.content.present?
       %p.message__content__text
-        = link_to entry.content, user_path(@gig.user)
+        #{link_to entry.user.name, user_path(entry.user)}が#{entry.content}にエントリーしました
+        -# =link_to "→投稿者のページへ", user_path(@gig.user)
   .message__info
-    .message__info__user-name
-      (
-      = link_to entry.user.name, user_path(entry.user)
     .message__info__date
+      (
       = entry.created_at.strftime("%Y/%m/%d %H:%M")
       )
   

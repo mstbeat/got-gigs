@@ -20,7 +20,7 @@ class GigsController < ApplicationController
       redirect_to root_path
       flash[:notice] = "gigが投稿されました"
     else
-      redirect_to root_path
+      render :new
       flash[:alert] = "gigの投稿に失敗しました"
     end
   end
