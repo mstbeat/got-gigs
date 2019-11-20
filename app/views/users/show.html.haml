@@ -12,7 +12,7 @@
           - else
             - if @isGroup == true
               %p
-                = link_to "メッセージへ", group_path(@groupId), class: "btn btn-primary"
+                = link_to "メッセージの続き", group_path(@groupId), class: "btn btn-primary"
             - else
               = form_for @group do |f|
                 = fields_for @group_user do |e|

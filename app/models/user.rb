@@ -9,6 +9,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :image, ImageUploader
+  with_options presence: true do
+    validates :name
+    validates :email
+  end
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)
