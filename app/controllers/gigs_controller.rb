@@ -1,6 +1,6 @@
 class GigsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_gig, only: [:show, :destroy]
+  before_action :set_gig, only: [:show, :destroy, :edit, :update]
 
   def index
     @gigs = Gig.includes(:user).order('created_at DESC').page(params[:page]).per(18)
@@ -36,6 +36,24 @@ class GigsController < ApplicationController
       flash[:alert] = "gigの削除に失敗しました"
     end
     redirect_to root_path
+  end
+
+  def edit
+        
+  end
+
+  def update
+    if @gig.user == current_user
+      if @gig.update(gig_params)
+        flash[:notice] = "gigが編集されました"
+        redirect_to gig_path(@gig)
+      else
+        flash[:alert] = "gigの編集に失敗しました"
+        render :edit
+      end
+    else
+      flash[:alert] = "gigの編集に失敗しました"
+    end
   end
 
   private

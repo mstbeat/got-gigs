@@ -2,7 +2,7 @@
   .message__content
     - if entry.content.present?
       %p.message__content__text
-        #{link_to entry.user.name, user_path(entry.user)}が#{entry.content}にエントリーしました
+        #{link_to entry.user.name, user_path(entry.user)} ： #{entry.content}にエントリー
         -# =link_to "→投稿者のページへ", user_path(@gig.user)
   .message__info
     .message__info__date

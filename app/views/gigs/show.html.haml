@@ -15,9 +15,9 @@
         .field
           ジャンル：
           = @gig.genre
-        .field
-          投稿者：
-          = @gig.user.name
+        -# .field
+        -#   投稿者：
+        -#   = @gig.user.name
         .field.container__gig__left__parts
           募集パート：
           - if @gig.parts.present?
@@ -31,6 +31,7 @@
           = link_to "エントリーへ", gig_entries_path(@gig), class: "btn btn-primary"
         %br/
         - if @gig.user_id == current_user.id
+          = link_to "gig 編集", edit_gig_path(@gig), class: "btn btn-info"
           = link_to "gig 削除", gig_path(@gig), method: :delete, class: "btn btn-danger"
       
       .container__gig__right

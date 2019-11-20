@@ -1,7 +1,15 @@
 .body
   .wrapper.devise--wrapper
+    - if @gig.errors.any?
+      #error_explanation
+        %h2
+          = @gig.errors.count
+          件のエラーがあります。
+        %ul
+          - @gig.errors.full_messages.each do |msg|
+            %li= msg
     .container
-    %h2.gig got gigs?
+    %h2.gig got gigs? （編集）
     = form_with model: @gig, local: true do |f|
       .field
         = f.label :イベント名
@@ -42,14 +50,9 @@
           %input{type: "checkbox", name: "gig[parts][]", value: "ドラム", class: "field__part", include_hidden: false}
         %label
           その他
-          %input{type: "text_field", name: "gig[parts][]", value: nil}
-      -# = f.fields_for :parts do |i|
-      -#   .field
-      -#     = f.label :募集パート
-      -#     %br/
-      -#     = i.text_field :name
+          %input{type: "text_field", name: "gig[parts][]"}
       .field
         = f.label :YouTube, "参考動画（YouTube）"
         %br/
         = f.text_field :youtube, placeholder: "https://www.youtube.com/XXXXXXXXXXX", size: "40"
-        = f.submit "投稿", class: "btn btn-primary"
+        = f.submit "編集", class: "btn btn-info"

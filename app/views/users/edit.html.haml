@@ -27,11 +27,11 @@
           = f.label :password_confirmation
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
-      .container__right
-        .field
-          - %w(ボーカル ギター ベース キーボード ドラム その他).each.with_index do |part,i|
-            %label
-              = check_box_tag 'user[part][]', part,false,id:"user_section_#{i}"
-              = part
+      -# .container__right
+      -#   .field
+      -#     - %w(ボーカル ギター ベース キーボード ドラム その他).each.with_index do |part,i|
+      -#       %label
+      -#         = check_box_tag 'user[part][]', part,false,id:"user_section_#{i}"
+      -#         = part
       .actions
         = f.submit "編集", class: "btn btn-primary"
