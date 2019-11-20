@@ -66,6 +66,10 @@
         .btn-primary {
           margin-bottom: 20px;
         }
+        .btn-info {
+          font-family: 'Gotmilk';
+          margin-right: 10px;
+        }
         .btn-danger {
           font-family: 'Gotmilk';
         }
@@ -102,6 +106,10 @@
         &__message {
           margin-right: 20px;
         }
+      }
+      .already-entry {
+        color: red;
+        font-weight: bold;
       }
     }    
   // }

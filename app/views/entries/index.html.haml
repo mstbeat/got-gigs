@@ -15,11 +15,16 @@
         -#     = f.submit 'エントリーする', class: 'btn btn-primary'
         .form
           = form_for [@gig, @entry] do |f|
-            - if @gig.parts.present?
-              - gig_parts = @gig.parts
-              - array_parts = gig_parts.split(",")
-              - array_parts.each do |array_part|
-                %label
-                  = array_part
-                  = f.radio_button :content, "#{array_part}", class: 'form__message', required: ""
-              = f.submit 'エントリーする', class: 'btn btn-primary'
+            - if @gig.entries.present?
+              - @gig.entries.each do |entry|
+                - if entry.user_id == current_user.id
+                  .already-entry エントリー済み
+            - else
+              - if @gig.parts.present?
+                - gig_parts = @gig.parts
+                - array_parts = gig_parts.split(",")
+                - array_parts.each do |array_part|
+                  %label
+                    = array_part
+                    = f.radio_button :content, "#{array_part}", class: 'form__message', required: ""
+                = f.submit 'エントリーする', class: 'btn btn-primary'
