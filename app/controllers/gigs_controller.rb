@@ -3,7 +3,7 @@ class GigsController < ApplicationController
   before_action :set_gig, only: [:show, :destroy, :edit, :update]
 
   def index
-    @gigs = Gig.includes(:user).order('created_at DESC').page(params[:page]).per(18)
+    @gigs = Gig.includes(:user).where('datetime >= ?', Date.yesterday).order('created_at DESC').page(params[:page]).per(18)
   end
 
   def new
@@ -16,7 +16,10 @@ class GigsController < ApplicationController
     url = params[:gig][:youtube]
     url = url.last(11)
     @gig.youtube = url
-    if @gig.save
+    if @gig.parts == "[\"\"]"
+      flash[:alert] = "gigの投稿に失敗しました"
+      render :new
+    elsif @gig.save
       redirect_to root_path
       flash[:notice] = "gigが投稿されました"
     else
@@ -44,7 +47,14 @@ class GigsController < ApplicationController
 
   def update
     if @gig.user == current_user
-      if @gig.update(gig_params)
+      if params[:gig][:parts] == [""]
+        flash[:alert] = "gigの編集に失敗しました"
+        render :new
+      elsif @gig.update(gig_params)
+        url = params[:gig][:youtube]
+        url = url.last(11)
+        @gig.youtube = url
+        @gig.update_columns(youtube: @gig.youtube)
         flash[:notice] = "gigが編集されました"
         redirect_to gig_path(@gig)
       else

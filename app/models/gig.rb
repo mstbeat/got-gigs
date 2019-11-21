@@ -3,8 +3,10 @@ class Gig < ApplicationRecord
   has_many :gig_parts
   # has_many :parts, through: :gig_parts
   has_many :entries, dependent: :destroy
+  validates :datetime, timeliness: { on_or_after: Date.today }
   before_save :parts_array
   before_save :parts_nil
+  validates :parts, presence: true
 
   with_options presence: true do
     validates :name

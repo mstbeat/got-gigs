@@ -14,13 +14,30 @@
           }
         }
       }
-      .gig__title {
-        margin: 20px 0;
-        font-size: 20px;
-        font-family: 'Gotmilk';
-        &__lists {
-          margin-bottom: 10px;
-          font-size: 18px;
+      .user-lists {
+        display: flex;
+        .gig__title {
+          width: 330px;
+          margin: 20px 0;
+          font-size: 20px;
+          font-family: 'Gotmilk';
+          &__lists {
+            margin-bottom: 10px;
+            font-size: 18px;
+          }
+        }
+        .user-entry {
+          width: 330px;
+          margin-left: 70px;
+          .user-entry__title {
+            margin: 20px 0;
+            font-size: 20px;
+            font-family: 'Gotmilk';
+            &__lists {
+              margin-bottom: 10px;
+              font-size: 18px;
+            }
+          }
         }
       }
     } 

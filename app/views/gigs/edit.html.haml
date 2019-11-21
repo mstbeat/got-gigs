@@ -18,7 +18,7 @@
       .field
         = f.label :日時
         %br/
-        = f.date_select :datetime
+        != sprintf(f.date_select(:datetime, use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
       .field
         = f.label :場所
         %br/

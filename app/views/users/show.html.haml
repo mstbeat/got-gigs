@@ -20,11 +20,19 @@
                 = f.submit "メッセージを送る", class: "btn btn-primary"
           
           %br/
-        .gig
-          .gig__title
-            gigsリスト
-          - @user.gigs.each do |gig|
-            .gig__title__lists
-              = link_to gig.name, gig_path(gig)
-              = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")
-              %br/
+        .user-lists
+          .gig
+            .gig__title
+              gigsリスト
+            - @user.gigs.each do |gig|
+              .gig__title__lists
+                = link_to gig.name, gig_path(gig)
+                = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")
+                %br/
+          .user-entry
+            .user-entry__title
+              エントリー済み リスト
+            - @user.entries.each do |entry|
+              .user-entry__title__lists
+                = link_to entry.gig.name, gig_path(entry.gig)
+                = entry.gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[entry.gig.datetime.wday]})")

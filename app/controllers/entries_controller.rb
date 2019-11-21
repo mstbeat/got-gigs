@@ -4,6 +4,10 @@ class EntriesController < ApplicationController
   def index
     @entry = Entry.new
     @entries = @gig.entries.includes(:user)
+    @entry_array = Array.new
+    @gig.entries.each do |entry|
+      @entry_array.push(entry.user_id)
+    end
   end
 
   def create

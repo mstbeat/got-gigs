@@ -28,7 +28,7 @@
         - if @gig.user == current_user
           = link_to "エントリー状況", gig_entries_path(@gig), class: "btn btn-warning"
         - else
-          = link_to "エントリーへ", gig_entries_path(@gig), class: "btn btn-primary"
+          = link_to "エントリー", gig_entries_path(@gig), class: "btn btn-primary"
         %br/
         - if @gig.user_id == current_user.id
           = link_to "gig 編集", edit_gig_path(@gig), class: "btn btn-info"
