@@ -8,7 +8,7 @@
           = @gig.name
         .field
           日時：
-          = @gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@gig.datetime.wday]})")
+          = @gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@gig.datetime.wday]}) %-H時%M分")
         .field
           場所：
           = @gig.location
@@ -31,7 +31,7 @@
           = link_to "エントリー", gig_entries_path(@gig), class: "btn btn-primary"
         %br/
         - if @gig.user_id == current_user.id
-          = link_to "gig 編集", edit_gig_path(@gig), class: "btn btn-info"
+          = link_to "gig 編集", edit_gig_path(@gig), class: "btn btn-primary edit-btn"
           = link_to "gig 削除", gig_path(@gig), method: :delete, class: "btn btn-danger"
       
       .container__gig__right

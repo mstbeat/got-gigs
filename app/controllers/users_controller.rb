@@ -14,6 +14,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @userGigs = @user.gigs.order('datetime ASC')
+    entry_gigs = Array.new
+    @user.entries.each do |entry|
+      entry_gigs.push(entry.gig)
+    end
+    @entry_gigs = entry_gigs.sort_by do |e|
+      [e.datetime]
+    end
     @currentUserEntry = GroupUser.where(user_id: current_user.id)
     @userEntry = GroupUser.where(user_id: @user.id)
     if @user.id == current_user.id

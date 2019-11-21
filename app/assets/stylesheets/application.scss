@@ -25,6 +25,19 @@
       color: black;
     }
   }
+  &__center {
+    font-size: 16px;
+    .search-input {
+      height: 42px;
+      width: 170px;
+      font-family: 'Gotmilk';
+      font-size: 1.2rem;
+    }
+    .btn-primary {
+      font-family: 'Gotmilk';
+      font-size: 1.4rem;
+    }
+  }
   &__right {
     font-size: 18px;
     display: flex;
@@ -63,6 +76,7 @@ h2 {
   background-size: cover;
   font-size: 16px;
   padding-top: 75px;
+  padding-bottom: 30px;
   height: 100vh;
   position: relative;
   overflow: auto;

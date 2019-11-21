@@ -5,22 +5,27 @@
     = form_with model: @gig, local: true do |f|
       .field
         = f.label :イベント名
+        %span.badge.badge-danger 必須
         %br/
         = f.text_field :name
       .field
         = f.label :日時
+        %span.badge.badge-danger 必須
         %br/
-        != sprintf(f.date_select(:datetime, use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
+        != sprintf(f.datetime_select(:datetime, start_year: Time.now.year, end_year: Time.now.year + 2, minute_step: 30, default: DateTime.now + 1.hour, use_month_numbers: true, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'),'年 ', '月 ', '日', '時') + '分'
       .field
         = f.label :場所
+        %span.badge.badge-danger 必須
         %br/
         = f.text_field :location
       .field
         = f.label :ジャンル
+        %span.badge.badge-danger 必須
         %br/
         = f.text_field :genre
       .field
         = f.label :募集パート
+        %span.badge.badge-danger 必須
         %br/
         %label
           ボーカル
