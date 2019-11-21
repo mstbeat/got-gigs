@@ -6,6 +6,7 @@
       .container__left
         .field
           = f.label :name
+          %span.badge.badge-danger 必須
           %br/
           = f.text_field :name, autofocus: true, autocomplete: "name"
         .field
@@ -14,6 +15,7 @@
           = f.file_field :image
         .field
           = f.label :email
+          %span.badge.badge-danger 必須
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email"
         .field

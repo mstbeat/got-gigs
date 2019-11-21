@@ -6,10 +6,12 @@
       = render "devise/shared/error_messages", resource: resource
       .field
         = f.label :name
+        %span.badge.badge-danger 必須
         %br/
         = f.text_field :name, autofocus: true, autocomplete: "name"
       .field
         = f.label :email
+        %span.badge.badge-danger 必須
         %br/
         = f.email_field :email, autofocus: true, autocomplete: "email"
       .field
@@ -17,10 +19,12 @@
         - if @minimum_password_length
           %em
             (#{@minimum_password_length}文字以上)
+        %span.badge.badge-danger 必須
         %br/
         = f.password_field :password, autocomplete: "new-password"
       .field
         = f.label :password_confirmation
+        %span.badge.badge-danger 必須
         %br/
         = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions

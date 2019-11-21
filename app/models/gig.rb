@@ -3,7 +3,7 @@ class Gig < ApplicationRecord
   has_many :gig_parts
   # has_many :parts, through: :gig_parts
   has_many :entries, dependent: :destroy
-  validates :datetime, timeliness: { on_or_after: Date.today }
+  validates :datetime, timeliness: { on_or_after: Time.now }
   before_save :parts_array
   before_save :parts_nil
   validates :parts, presence: true
@@ -34,6 +34,14 @@ class Gig < ApplicationRecord
 
   def parts_array
     self.parts.gsub!(/[\[\]\"]/, "").gsub!(" ","") if attribute_present?("parts")
+  end
+
+  def self.search(search)
+    if search
+      Gig.where('name LIKE(?) or datetime LIKE(?) or location LIKE(?) or genre LIKE(?) or parts LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      Gig.all
+    end
   end
 
   # before_save do

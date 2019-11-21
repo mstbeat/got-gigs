@@ -3,7 +3,7 @@ class GigsController < ApplicationController
   before_action :set_gig, only: [:show, :destroy, :edit, :update]
 
   def index
-    @gigs = Gig.includes(:user).where('datetime >= ?', Date.yesterday).order('created_at DESC').page(params[:page]).per(18)
+    @gigs = Gig.includes(:user).where('datetime >= ?', Time.now).order('datetime ASC').page(params[:page]).per(18)
   end
 
   def new
