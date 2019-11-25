@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_095639) do
+ActiveRecord::Schema.define(version: 2019_11_25_091529) do
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_095639) do
     t.bigint "gig_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "visited_at"
     t.index ["gig_id"], name: "index_entries_on_gig_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_095639) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.datetime "lastaccesshome", default: "2019-11-25 08:14:48"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

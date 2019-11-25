@@ -8,6 +8,14 @@ class EntriesController < ApplicationController
     @gig.entries.each do |entry|
       @entry_array.push(entry.user_id)
     end
+    if @gig.user == current_user && @gig.entries.present?
+      if @gig.entries.last.visited_at == nil || @gig.entries.last.visited_at.present?
+        if @gig.entries.last.visited_at == nil || @gig.entries.last.created_at > @gig.entries.last.visited_at
+          @gig.entries.last.visited_at = DateTime.now
+          @gig.entries.last.save
+        end
+      end
+    end
   end
 
   def create
@@ -31,3 +39,4 @@ class EntriesController < ApplicationController
       @gig = Gig.find(params[:gig_id])
     end
 end
+
