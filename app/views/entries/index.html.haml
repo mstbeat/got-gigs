@@ -29,7 +29,7 @@
               -#       = f.radio_button :content, "#{array_part}", class: 'form__message', required: ""
               -#     = f.submit 'エントリーする', class: 'btn btn-primary'
             - if @entry_array.include?(current_user.id)
-              .already-entry エントリー済み
+              %span.badge.badge-danger.already-entry エントリー済み
             - else
               - if @gig.parts.present?
                 - gig_parts = @gig.parts

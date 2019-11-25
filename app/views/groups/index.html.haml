@@ -1,10 +1,13 @@
 .body
-  .wrapper
-    .groups
-      - current_user.groups.each do |group|
-        .group
-          = link_to '#' do
-            .group__name
-              = group.name
-            .group__message
-              メッセージはまだありません。
+  .wrapper.devise--wrapper
+    .entry-title
+      %h2 メッセージ一覧
+      - if current_user.groups.present?
+        - current_user.groups.each do |group|
+          .entries
+            = link_to group_path(group) do
+              .group__name
+                = group.users.name
+
+      - else
+        メッセージはまだありません。

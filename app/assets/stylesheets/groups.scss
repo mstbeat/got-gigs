@@ -9,6 +9,7 @@
     }
     .field {
       margin-bottom: 20px;
+      
     }
     .actions {
       margin-bottom: 20px;
@@ -16,6 +17,20 @@
     .new_message {
       margin-top: 15px;
       margin-bottom: 80px;
+    }
+    .entry__message {
+      margin-right: 100px;
+      display: grid;
+      
+    }
+    .entry__message__content {
+      word-break: break-word;
+      margin-bottom: 10px;
+      display: block;
+      &__user {
+        float: left;
+        font-size: 10px;
+    }
     }
   }
 }
