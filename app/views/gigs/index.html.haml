@@ -24,7 +24,17 @@
                     = array_part
             - if gig.user == current_user
               = link_to "エントリー状況", gig_entries_path(gig), class: "btn btn-warning"
+              - if gig.entries.present?
+                - if gig.entries.last.visited_at.present? || gig.entries.last.visited_at == nil
+                  - if gig.entries.last.visited_at == nil || gig.entries.last.created_at > gig.entries.last.visited_at 
+                    %span.badge.badge-pill.badge-danger.notification NEW
             - else
-              = link_to "エントリー", gig_entries_path(gig), class: "btn btn-primary"
+              - entry_array = Array.new
+              - gig.entries.each do |entry|
+                - entry_array.push(entry.user_id)
+              - if entry_array.include?(current_user.id)
+                = link_to "エントリー済み", gig_entries_path(gig), class: "btn btn-primary"
+              - else
+                = link_to "エントリー", gig_entries_path(gig), class: "btn btn-primary"
       .center
         = paginate(@gigs)
