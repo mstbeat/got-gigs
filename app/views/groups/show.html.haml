@@ -4,15 +4,15 @@
       %h3 メッセージ
       - if @messages.present?
         .entry__message
-        - @messages.each do |m|
-          .entry__message__content
-            = m.content
-          .entry__message__user
-            (
-            %a{:href => "/users/#{m.user_id}"}
-              = m.user.name
-            = m.created_at.strftime("%Y/%m/%d %H:%M")
-            )
+          - @messages.each do |m|
+            .entry__message__content
+              = m.content
+              %span.entry__message__user
+                (
+                %a{:href => "/users/#{m.user_id}"}
+                  = m.user.name
+                = m.created_at.strftime("%Y/%m/%d %H:%M")
+                )
       - else
         メッセージはまだありません
       = form_for @message do |f|
