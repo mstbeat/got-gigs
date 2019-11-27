@@ -30,7 +30,12 @@
       &__user {
         float: left;
         font-size: 10px;
+      }
     }
+    .group-title {
+      &__user-name {
+        margin-bottom: 10px;
+      }
     }
   }
 }

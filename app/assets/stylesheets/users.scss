@@ -17,7 +17,7 @@
       .user-lists {
         display: flex;
         .gig__title {
-          width: 330px;
+          width: 370px;
           margin: 20px 0;
           font-size: 20px;
           font-family: 'Gotmilk';
@@ -27,8 +27,8 @@
           }
         }
         .user-entry {
-          width: 330px;
-          margin-left: 70px;
+          width: 370px;
+          margin-left: 50px;
           .user-entry__title {
             margin: 20px 0;
             font-size: 20px;
@@ -43,22 +43,22 @@
     } 
   }
   .devise--wrapper {
-      padding-left: 200px;
-      padding-top: 50px;
-      height: 100vh;
-      position: absolute;
-      h2 {
-        padding-bottom: 20px;
+    padding-left: 200px;
+    padding-top: 50px;
+    height: 100vh;
+    position: absolute;
+    h2 {
+      padding-bottom: 20px;
+    }
+    .field {
+      margin-bottom: 20px;
+      &__part {
+        margin-right: 15px;
       }
-      .field {
-        margin-bottom: 20px;
-        &__part {
-          margin-right: 15px;
-        }
-      }
-      .actions {
-        margin-bottom: 20px;
-      }
+    }
+    .actions {
+      margin-bottom: 20px;
+    }
   }
 }
 

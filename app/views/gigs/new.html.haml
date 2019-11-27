@@ -12,7 +12,7 @@
         = f.label :日時
         %span.badge.badge-danger 必須
         %br/
-        != sprintf(f.datetime_select(:datetime, start_year: Time.now.year, end_year: Time.now.year + 2, minute_step: 30, default: DateTime.now + 1.hour, use_month_numbers: true, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'),'年 ', '月 ', '日', '時') + '分'
+        != sprintf(f.datetime_select(:datetime, start_year: Time.now.year, end_year: Time.now.year + 2, minute_step: 30, default: DateTime.now + 2.hour, use_month_numbers: true, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'),'年 ', '月 ', '日', '時') + '分'
       .field
         = f.label :場所
         %span.badge.badge-danger 必須

@@ -23,9 +23,19 @@
       .header__left
         = link_to "got gigs?", root_path, method: :get
       .header__center
-        = form_with(url: gigs_searches_path, local: true, method: :get, class: "search-form") do |form|
-          = form.text_field :keyword, placeholder: " gigs を検索する", class: "search-input"
-          = form.submit "search", class: "btn btn-primary"
+        - if user_signed_in?
+          = form_with(url: gigs_searches_path, local: true, method: :get, class: "search-form") do |form|
+            = form.text_field :keyword, placeholder: " gigs を検索する", class: "search-input"
+            = form.submit "search", class: "btn btn-primary"
+        - else
+          .header__center__message
+            %span.header__center__message__title got gigs?
+            %span.header__center__message__jp （ライブある？）
+            %span.header__center__message__color ミュージシャン
+            と
+            %span.header__center__message__color ライブ
+            のマッチングサイト
+            -# %a{:href => "/users/sign_up", class: "badge badge-primary header__center__message__signup"} アカウント登録
       .header__right
         .header__right--gig
           -if user_signed_in?

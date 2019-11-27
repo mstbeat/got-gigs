@@ -1,13 +1,18 @@
 .body
-  .wrapper.devise--wrapper
-    .entry-title
+  .wrapper.devise-wrapper
+    .group-title
       %h2 メッセージ一覧
-      - if current_user.groups.present?
-        - current_user.groups.each do |group|
-          .entries
-            = link_to group_path(group) do
-              .group__name
-                = group.users.name
-
+      - if @groups.present?
+        - @groups.each do |group|
+          - group.users.each do |user|
+            - unless user == current_user
+              - if group.messages.present?
+                .group-title__user-name
+                  = link_to group_path(group) do
+                    = user.name
+                  (#{group.messages.last.created_at.strftime("%Y/%m/%d %H:%M")})
+                  - if group.messages.last.visited_at == nil || group.messages.last.created_at > group.messages.last.visited_at
+                    - if group.messages.last.user_id != current_user.id
+                      %span.badge.badge-pill.badge-danger.notification NEW
       - else
         メッセージはまだありません。
