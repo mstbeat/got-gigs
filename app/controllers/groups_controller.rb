@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    
+    @groups = current_user.groups.order('created_at DESC')
   end
 
   def create
@@ -27,6 +27,12 @@ class GroupsController < ApplicationController
       @group_users = @group.group_users
     else
       redirect_back(fallback_location: root_path)
+    end
+    if @group.messages.present?
+      unless @group.messages.last.user_id == current_user.id
+        @group.messages.last.visited_at = DateTime.now
+        @group.messages.last.save
+      end
     end
   end
 

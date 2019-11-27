@@ -7,21 +7,21 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       redirect_to user_path(current_user)
+      flash[:notice] = "プロフィールを編集しました"
     else
       redirect_to edit_user_path(current_user)
+      flash[:alert] = "プロフィールの編集に失敗しました"
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @userGigs = @user.gigs.order('datetime ASC')
+    @userGigs = @user.gigs.order('datetime DESC')
     entry_gigs = Array.new
     @user.entries.each do |entry|
       entry_gigs.push(entry.gig)
     end
-    @entry_gigs = entry_gigs.sort_by do |e|
-      [e.datetime]
-    end
+    @entry_gigs = entry_gigs.sort_by{|e| e[:datetime]}.reverse!
     @currentUserEntry = GroupUser.where(user_id: current_user.id)
     @userEntry = GroupUser.where(user_id: @user.id)
     if @user.id == current_user.id

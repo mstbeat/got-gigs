@@ -37,6 +37,24 @@
       font-family: 'Gotmilk';
       font-size: 1.4rem;
     }
+    &__message {
+      font-family: 'Gotmilk';
+      font-size: 16px;
+      &__title {
+        font-size: 24px;
+      }
+      &__jp {
+        margin-right: 20px;
+      }
+      &__color {
+        color: #007bff;
+        font-weight: bold;
+      }
+      &__signup {
+        margin-left: 20px;
+        font-size: 1.0rem;
+      }
+    }
   }
   &__right {
     font-size: 18px;
