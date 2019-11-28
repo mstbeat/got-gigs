@@ -23,7 +23,7 @@
                   - array_parts.each do |array_part|
                     = array_part
             - if gig.user == current_user
-              = link_to "エントリー状況", gig_entries_path(gig), class: "btn btn-warning"
+              = link_to "my gig", gig_entries_path(gig), class: "btn btn-warning my-gig"
               - if gig.entries.present?
                 - if gig.entries.last.visited_at.present? || gig.entries.last.visited_at == nil
                   - if gig.entries.last.visited_at == nil || gig.entries.last.created_at > gig.entries.last.visited_at 

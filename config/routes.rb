@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :groups, only: [:index, :create, :show]
   resources :gigs, only: [:new, :create, :show, :destroy, :edit, :update] do
     resources :parts, only: [:create]
-    resources :entries, only: [:index, :create]
+    resources :entries, only: [:index, :create, :destroy]
   end
 end

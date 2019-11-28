@@ -29,11 +29,16 @@
               .gig__title__lists
                 = link_to gig.name, gig_path(gig)
                 = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")
+                - if gig.user == current_user && gig.entries.present?
+                  - if gig.entries.last.visited_at.present? || gig.entries.last.visited_at == nil
+                    - if gig.entries.last.visited_at == nil || gig.entries.last.created_at > gig.entries.last.visited_at 
+                      %span.badge.badge-pill.badge-danger.notification.user-page-badge NEW
                 %br/
-          .user-entry
-            .user-entry__title
-              エントリー済み リスト
-            - @entry_gigs.each do |gig|
-              .user-entry__title__lists
-                = link_to gig.name, gig_path(gig)
-                = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")
+          - if @user == current_user
+            .user-entry
+              .user-entry__title
+                エントリー済み リスト
+              - @entry_gigs.each do |gig|
+                .user-entry__title__lists
+                  = link_to gig.name, gig_path(gig)
+                  = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]})")

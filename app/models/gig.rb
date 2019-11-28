@@ -34,6 +34,7 @@ class Gig < ApplicationRecord
 
   def parts_array
     self.parts.gsub!(/[\[\]\"]/, "").gsub!(" ","") if attribute_present?("parts")
+    self.parts.split(",")
   end
 
   def self.search(search)

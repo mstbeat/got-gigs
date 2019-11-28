@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   def index
     @entry = Entry.new
-    @entries = @gig.entries.includes(:user)
+    @entries = @gig.entries.includes(:user).order('created_at DESC')
     @entry_array = Array.new
     @gig.entries.each do |entry|
       @entry_array.push(entry.user_id)
@@ -27,6 +27,16 @@ class EntriesController < ApplicationController
       flash.now[:alert] = "エントリーできませんでした"
       redirect_to gig_entries_path(@gig)
     end
+  end
+
+  def destroy
+    @entry = Entry.find(params[:id])
+    if @entry.user == current_user
+      flash[:notice] = "エントリーを取り消しました" if @entry.destroy
+    else
+      flash[:alert] = "エントリーの取り消しに失敗しました"
+    end
+    redirect_to gig_path(@entry.gig)
   end
 
   private
