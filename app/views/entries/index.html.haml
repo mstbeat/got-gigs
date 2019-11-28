@@ -4,34 +4,29 @@
       %h2 エントリー
       %h5 #{link_to @gig.name, gig_path(@gig)}  #{@gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@gig.datetime.wday]})")}
     .entries
-      - if @entries.present?
+      - if @entries.present? && @gig.user == current_user
         = render @entries
-      - else
+      - elsif @gig.user == current_user
         エントリーはありません 
       - unless @gig.user == current_user
         -# .form
         -#   = form_for [@gig, @entry] do |f|
         -#     = f.hidden_field :content, class: 'form__message', value: 'エントリー完了（投稿者のページへ）'
         -#     = f.submit 'エントリーする', class: 'btn btn-primary'
-        .form
-          = form_for [@gig, @entry] do |f|
-            -# - if @gig.entries.present?
+        .entry-form
+          - if @entry_array.include?(current_user.id)
             - @gig.entries.each do |entry|
-              -# - if entry.user_id == current_user.id
-              -#   .already-entry エントリー済み
-              -# - else
-              -#   - if @gig.parts.present?
-              -#     - gig_parts = @gig.parts
-              -#     - array_parts = gig_parts.split(",")
-              -#     - array_parts.each do |array_part|
-              -#       %label
-              -#       = array_part
-              -#       = f.radio_button :content, "#{array_part}", class: 'form__message', required: ""
-              -#     = f.submit 'エントリーする', class: 'btn btn-primary'
-            - if @entry_array.include?(current_user.id)
-              %span.badge.badge-danger.already-entry エントリー済み
-            - else
-              - if @gig.parts.present?
+              - if entry.user == current_user
+                -# %p.message__content__text
+                -#   #{link_to entry.user.name, user_path(entry.user)} ： #{entry.content}にエントリー
+                #{entry.content}にエントリーしました
+                (
+                = entry.created_at.strftime("%Y/%m/%d %H:%M")
+                )
+                = link_to "取消", gig_entry_path(@gig, entry), method: :delete, class: "btn btn-danger entry-delete"
+          - else
+            - if @gig.parts.present?
+              = form_for [@gig, @entry] do |f|
                 - gig_parts = @gig.parts
                 - array_parts = gig_parts.split(",")
                 - array_parts.each do |array_part|

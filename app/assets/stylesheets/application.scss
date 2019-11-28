@@ -93,7 +93,7 @@ h2 {
   background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), image-url("concert.jpg");  
   background-size: cover;
   font-size: 16px;
-  padding-top: 75px;
+  // padding-top: 75px;
   padding-bottom: 30px;
   height: 100vh;
   position: relative;
@@ -144,6 +144,11 @@ h2 {
             text-decoration: none;
             color: #262626;
           }
+          .my-gig {
+            font-family: 'Gotmilk';
+            font-size: 23.5px;
+            padding: 0 12px;
+          }
         }
       }
     }
@@ -172,9 +177,11 @@ h2 {
   font-size: 20px;
 }
 
-.alert {
-  padding-top: 85px;
-  margin: 0;
+.main-container {
+  padding-top: 75px;
+  .alert {
+    margin: 0;
+  }
 }
 
 @font-face {

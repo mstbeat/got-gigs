@@ -17,13 +17,13 @@ class GigsController < ApplicationController
     url = url.last(11)
     @gig.youtube = url
     if @gig.parts == "[\"\"]"
-      flash[:alert] = "gigの投稿に失敗しました"
+      flash.now[:alert] = "gigの投稿に失敗しました"
       render :new
     elsif @gig.save
       redirect_to root_path
       flash[:notice] = "gigが投稿されました"
     else
-      flash[:alert] = "gigの投稿に失敗しました"
+      flash.now[:alert] = "gigの投稿に失敗しました"
       render :new
     end
   end
@@ -42,7 +42,8 @@ class GigsController < ApplicationController
   end
 
   def edit
-        
+    @gig = Gig.find(params[:id])
+    @parts = @gig.parts.split(",")
   end
 
   def update

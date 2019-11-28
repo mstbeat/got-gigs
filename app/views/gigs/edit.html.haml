@@ -37,25 +37,47 @@
         %br/
         %label
           ボーカル
-          %input{type: "checkbox", name: "gig[parts][]", value: "ボーカル", class: "field__part", include_hidden: false}
+          - if @parts.include?("ボーカル")
+            %input{type: "checkbox", name: "gig[parts][]", value: "ボーカル", class: "field__part", include_hidden: false, checked: true }
+          - else 
+            %input{type: "checkbox", name: "gig[parts][]", value: "ボーカル", class: "field__part", include_hidden: false, checked: false }
         %label
           ギター
-          %input{type: "checkbox", name: "gig[parts][]", value: "ギター", class: "field__part", include_hidden: false}
+          - if @parts.include?("ギター")
+            %input{type: "checkbox", name: "gig[parts][]", value: "ギター", class: "field__part", include_hidden: false, checked: true }
+          - else
+            %input{type: "checkbox", name: "gig[parts][]", value: "ギター", class: "field__part", include_hidden: false, checked: false }
         %label
           キーボード
-          %input{type: "checkbox", name: "gig[parts][]", value: "キーボード", class: "field__part", include_hidden: false}
+          - if @parts.include?("キーボード")
+            %input{type: "checkbox", name: "gig[parts][]", value: "キーボード", class: "field__part", include_hidden: false, checked: true}
+          - else
+            %input{type: "checkbox", name: "gig[parts][]", value: "キーボード", class: "field__part", include_hidden: false, checked: false}
         %label
           ピアノ
-          %input{type: "checkbox", name: "gig[parts][]", value: "ピアノ", class: "field__part", include_hidden: false}
+          - if @parts.include?("ピアノ")
+            %input{type: "checkbox", name: "gig[parts][]", value: "ピアノ", class: "field__part", include_hidden: false, checked: true}
+          - else
+            %input{type: "checkbox", name: "gig[parts][]", value: "ピアノ", class: "field__part", include_hidden: false, checked: false}
         %label
           ベース
-          %input{type: "checkbox", name: "gig[parts][]", value: "ベース", class: "field__part", include_hidden: false}
+          - if @parts.include?("ベース")
+            %input{type: "checkbox", name: "gig[parts][]", value: "ベース", class: "field__part", include_hidden: false, checked: true}
+          - else
+            %input{type: "checkbox", name: "gig[parts][]", value: "ベース", class: "field__part", include_hidden: false, checked: false}
         %label
           ドラム
-          %input{type: "checkbox", name: "gig[parts][]", value: "ドラム", class: "field__part", include_hidden: false}
+          - if @parts.include?("ドラム")
+            %input{type: "checkbox", name: "gig[parts][]", value: "ドラム", class: "field__part", include_hidden: false, checked: true}
+          - else
+            %input{type: "checkbox", name: "gig[parts][]", value: "ドラム", class: "field__part", include_hidden: false, checked: false}
         %label
           その他
-          %input{type: "text_field", name: "gig[parts][]"}
+          - case @parts.last
+          - when "ボーカル", "ギター", "キーボード", "ベース", "ドラム"
+            %input{type: "text_field", name: "gig[parts][]"}
+          - else
+            %input{type: "text_field", name: "gig[parts][]", value: "#{@parts.last}"}
       .field
         = f.label :YouTube, "参考動画（YouTube）"
         %br/

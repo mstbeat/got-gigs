@@ -3,7 +3,7 @@
   background-size: cover;
   font-size: 16px;
   color: #fff;
-  padding-top: 75px;
+  // padding-top: 75px;
   height: 100vh;
   overflow: auto;
   // .wrapper {
@@ -60,8 +60,12 @@
           text-indent: -6.2em;
           padding-left: 6.2em;
         }
+        .gig-page-badge {
+          // margin-bottom: 20px;
+          margin: 0 auto;
+        }
         .btn-warning {
-          margin-bottom: 20px;
+          // margin-bottom: 20px;
         }
         .btn-primary {
           margin-bottom: 20px;
@@ -70,9 +74,11 @@
           font-family: 'Gotmilk';
           margin-right: 10px;
           margin-bottom: 0;
+          margin-top: 20px;
         }
         .btn-danger {
           font-family: 'Gotmilk';
+          margin-top: 20px;
         }
       }
       &__right {
@@ -110,6 +116,10 @@
       }
       .already-entry {
         font-size: 16px;
+        font-weight: normal;
+      }
+      .entry-delete {
+        margin-left: 10px;
       }
     }    
   // }
