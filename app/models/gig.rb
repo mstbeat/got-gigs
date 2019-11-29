@@ -39,7 +39,7 @@ class Gig < ApplicationRecord
 
   def self.search(search)
     if search
-      Gig.where('name LIKE(?) or datetime LIKE(?) or location LIKE(?) or genre LIKE(?) or parts LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+      Gig.where('name LIKE(?) or DATE_FORMAT(datetime, "%Y年%m月%d日") LIKE(?) or location LIKE(?) or genre LIKE(?) or parts LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
     else
       Gig.all
     end

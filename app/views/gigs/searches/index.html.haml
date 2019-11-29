@@ -2,37 +2,42 @@
   .wrapper
     .main.container
       .main__contents.row
-        - @gigs.each do |gig|
-          .main__contents__content.col-md-4
-            .main__contents__content--name
-              イベント名：#{link_to gig.name, gig_path(gig)}
-            .main__contents__content--date
-              = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]}) %-H時%M分")
-            .main__contents__content--location
-              場所：#{gig.location}
-            .main__contents__content--genre
-              ジャンル：#{gig.genre}
-            .main__contents__content--need
-              .main__contents__content--need--part
-                募集パート：
-                - if gig.parts.present?
-                  - gig_parts = gig.parts
-                  - array_parts = gig_parts.split(",")
-                  - array_parts.each do |array_part|
-                    = array_part
-            - if gig.user == current_user
-              = link_to "my gig", gig_entries_path(gig), class: "btn btn-warning my-gig"
-              - if gig.entries.present?
-                - if gig.entries.last.visited_at.present? || gig.entries.last.visited_at == nil
-                  - if gig.entries.last.visited_at == nil || gig.entries.last.created_at > gig.entries.last.visited_at 
-                    %span.badge.badge-pill.badge-danger.notification NEW
-            - else
-              - entry_array = Array.new
-              - gig.entries.each do |entry|
-                - entry_array.push(entry.user_id)
-              - if entry_array.include?(current_user.id)
-                = link_to "エントリー済み", gig_entries_path(gig), class: "btn btn-primary"
+        -if @gigs.present?
+          - @gigs.each do |gig|
+            .main__contents__content.col-md-4
+              .main__contents__content--name
+                イベント名：#{link_to gig.name, gig_path(gig)}
+              .main__contents__content--date
+                = gig.datetime.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[gig.datetime.wday]}) %-H時%M分")
+              .main__contents__content--location
+                場所：#{gig.location}
+              .main__contents__content--genre
+                ジャンル：#{gig.genre}
+              .main__contents__content--need
+                .main__contents__content--need--part
+                  募集パート：
+                  - if gig.parts.present?
+                    - gig_parts = gig.parts
+                    - array_parts = gig_parts.split(",")
+                    - array_parts.each do |array_part|
+                      = array_part
+              - if gig.user == current_user
+                = link_to "my gig", gig_entries_path(gig), class: "btn btn-warning my-gig"
+                - if gig.entries.present?
+                  - if gig.entries.last.visited_at.present? || gig.entries.last.visited_at == nil
+                    - if gig.entries.last.visited_at == nil || gig.entries.last.created_at > gig.entries.last.visited_at 
+                      %span.badge.badge-pill.badge-danger.notification NEW
               - else
-                = link_to "エントリー", gig_entries_path(gig), class: "btn btn-primary"
+                - entry_array = Array.new
+                - gig.entries.each do |entry|
+                  - entry_array.push(entry.user_id)
+                - if entry_array.include?(current_user.id)
+                  = link_to "エントリー済み", gig_entries_path(gig), class: "btn btn-primary"
+                - else
+                  = link_to "エントリー", gig_entries_path(gig), class: "btn btn-primary"
+        - else
+          該当する 
+          %span.no-search-result gigs
+          はありません
       .center
         = paginate(@gigs)
