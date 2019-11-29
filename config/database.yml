@@ -49,9 +49,13 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['heroku_ef5841ef8b95cb6?reconnect'] %>
-  username: <%= ENV['b80087deb07bd9'] %>
-  password: <%= ENV['85843073'] %>
-  adapter: mysql2
+  adapter: postgresql
   encoding: unicode
+  database: db/production.postgresql
   pool: 5
+  username: test_postgre
+  password:
+
+  # database: <%= ENV['heroku_ef5841ef8b95cb6'] %>
+  # username: <%= ENV['b80087deb07bd9'] %>
+  # password: <%= ENV['85843073'] %>
