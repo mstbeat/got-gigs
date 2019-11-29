@@ -70,3 +70,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'jc-validates_timeliness'
+
+gem 'rails_12factor'
