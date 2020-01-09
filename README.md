@@ -4,7 +4,7 @@
 Matching website for musicians and concerts(gigs)
 
 ## Description
-- You can post a concert(gig) in which you need a musician.
+- You can post a concert(gig) for which you need a musician.
 - You can apply for a concert(gig) as an available musician.
 - You can exchange messages to adjust the schedule and ask the right musician to play for the conert.
 
