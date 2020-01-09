@@ -1,25 +1,22 @@
-# README
+# got gigs?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+Matching website for musicians and concerts(gigs)
 
-Things you may want to cover:
+## Description
+- You can post a concert(gig) in which you need a musician.
+- You can apply for a concert(gig) as an available musician.
+- You can exchange messages to adjust the schedule and ask the right musician to play for the conert.
 
-* Ruby version
+***Demo:***
+[![Demo](https://i.gyazo.com/50ed706be5b2be50672f74d7672c9b76.gif)](https://gyazo.com/50ed706be5b2be50672f74d7672c9b76)
 
-* System dependencies
+## Requirement
+- Ruby
+- Ruby on Rails
+- Sass
+- jQuery
+- Haml
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# got-gigs
+## Author
+[mstbeat](https://github.com/mstbeat)
