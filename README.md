@@ -1,14 +1,14 @@
 # got gigs?
 
 ## URL
-https://got-gigs.herokuapp.com/
+https://got-gigs.herokuapp.com
 
 ## Overview（概要）
-Matching website for musicians and concerts(gigs)<br>
+Matching website for musicians and concerts(gigs)  
 ミュージシャンとライブ（gig）のマッチングサイト
 
 
-## Description（詳細）
+## Description（説明）
 - You can post a concert(gig) for which you need a musician.
 - You can apply for a concert(gig) as an available musician.
 - You can exchange messages to adjust the schedule and ask the right musician to play for the conert.
@@ -17,7 +17,7 @@ Matching website for musicians and concerts(gigs)<br>
 - エントリー後は、メッセージを通してコンサート（gig）に参加できるか調整できます。
 
 ## Why（制作背景）
-I created this app because there was no website to look for missing musicians for a concert.<br>
+I created this app because there was no website to look for missing musicians for a concert.  
 バンドメンバー募集のサービスは多く存在するが、コンサートでのミュージシャンを募集・応募するサービスがなかったため。
 
 ***Demo:***
@@ -31,7 +31,7 @@ I created this app because there was no website to look for missing musicians fo
 - Sass
 - jQuery
 - Haml
-- AWS (S3)
+- AWS(S3)
 
 ## Author（作者）
 [mstbeat](https://github.com/mstbeat)
