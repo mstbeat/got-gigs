@@ -2,6 +2,7 @@
 
 ## URL
 https://got-gigs.herokuapp.com
+Test Account (Eメール:test@test.com, パスワード:password)
 
 ## Overview（概要）
 Matching website for musicians and concerts(gigs)  
